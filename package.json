@@ -12,6 +12,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fontsource/space-mono": "^4.5.12",
+    "@heroicons/vue": "^2.0.16",
+    "@vueuse/core": "^9.13.0",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
