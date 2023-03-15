@@ -1,16 +1,3 @@
-<script lang="ts" setup>
-import { useDark, useToggle } from '@vueuse/core';
-import {
-  SunIcon,
-  MoonIcon,
-  MagnifyingGlassIcon,
-} from '@heroicons/vue/24/outline';
-import { MapPinIcon, LinkIcon, HomeModernIcon } from '@heroicons/vue/24/solid';
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
-</script>
-
 <template>
   <div class="w-full h-screen flex bg-gray-100 dark:bg-dark p-3 md:p-5">
     <div class="m-auto w-full md:w-box">
@@ -54,6 +41,7 @@ const toggleDark = useToggle(isDark);
           />
 
           <button
+            @click="getUser()"
             class="my-2 mx-3 py-2 px-5 rounded-lg bg-dark1 dark:bg-blue1 text-white"
           >
             Search
@@ -67,7 +55,7 @@ const toggleDark = useToggle(isDark);
             <img
               src="../assets/profile.jpeg"
               alt="profile"
-              class="w-32 h-32 rounded-full"
+              class="w-36 h-36 rounded-full"
             />
           </div>
 
@@ -83,27 +71,27 @@ const toggleDark = useToggle(isDark);
             </div>
 
             <div
-              class="mt-5 py-3 px-5 bg-dark1 dark:bg-dark rounded-lg text-white"
+              class="my-7 py-3 px-5 bg-dark1 dark:bg-dark rounded-lg text-white"
             >
               <div class="flex items-center justify-between">
                 <div>
-                  <h1>Repos</h1>
+                  <h1 class="text-blue1">Repos</h1>
                   <p>8</p>
                 </div>
 
                 <div>
-                  <h1>Followers</h1>
+                  <h1 class="text-blue1">Followers</h1>
                   <p>2890</p>
                 </div>
 
                 <div>
-                  <h1>Following</h1>
+                  <h1 class="text-blue1">Following</h1>
                   <p>129</p>
                 </div>
               </div>
             </div>
 
-            <div class="mt-8">
+            <div>
               <div class="grid gap-3 grid-cols-2">
                 <div class="flex items-center gap-3">
                   <MapPinIcon class="w-5 h-5 text-blue1" />
@@ -143,3 +131,37 @@ const toggleDark = useToggle(isDark);
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { useDark, useToggle } from '@vueuse/core';
+import {
+  SunIcon,
+  MoonIcon,
+  MagnifyingGlassIcon,
+} from '@heroicons/vue/24/outline';
+import { MapPinIcon, LinkIcon, HomeModernIcon } from '@heroicons/vue/24/solid';
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
+</script>
+
+<script lang="ts">
+import axios from 'axios';
+export default {
+  name: 'githubUser',
+  data() {
+    return {
+      detailUser: [],
+    };
+  },
+  methods: {
+    async getUser() {
+      const res = await axios.get(`https://api.github.com/users/username`);
+      this.detailUser = res;
+    },
+  },
+  //   mounted() {
+  //     this.getUser('aseppp');
+  //   },
+};
+</script>
