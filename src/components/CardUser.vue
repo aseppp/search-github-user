@@ -35,6 +35,7 @@
         >
           <MagnifyingGlassIcon class="w-7 h-7 absolute my-2 mx-3" />
           <input
+            v-model="username"
             type="name"
             placeholder="Search github username"
             class="w-full bg-white dark:bg-dark1 ml-14 focus:border-none focus:outline-none my-2"
@@ -151,17 +152,17 @@ export default {
   name: 'githubUser',
   data() {
     return {
+      username: null,
       detailUser: [],
     };
   },
   methods: {
     async getUser() {
-      const res = await axios.get(`https://api.github.com/users/username`);
+      const res = await axios.get(
+        `https://api.github.com/users/${this.username}`
+      );
       this.detailUser = res;
     },
   },
-  //   mounted() {
-  //     this.getUser('aseppp');
-  //   },
 };
 </script>
