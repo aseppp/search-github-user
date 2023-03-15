@@ -9,7 +9,7 @@ module.exports = {
         box: '40rem',
       },
       colors: {
-        dark: '#1d1d1d',
+        dark: '#25252d',
         dark1: '#18181d',
         blue1: '#5773ff',
       },
